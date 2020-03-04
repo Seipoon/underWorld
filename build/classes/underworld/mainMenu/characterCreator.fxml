@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="underworld.mainMenu.characterCreatorController">
+   <children>
+      <Text fill="WHITE" layoutX="177.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Your Character" textAlignment="CENTER">
+         <font>
+            <Font name="Century" size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="nameField" layoutX="312.0" layoutY="90.0" />
+      <Text fill="WHITE" layoutX="170.0" layoutY="110.0" text="Character Name:">
+         <font>
+            <Font name="Century" size="17.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="269.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="10.0" text="Class" textAlignment="CENTER">
+         <font>
+            <Font name="Century" size="25.0" />
+         </font>
+      </Text>
+      <ToggleButton fx:id="mageBtn" layoutX="254.0" layoutY="200.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #1a75ff;" stylesheets="@characterCreatorCSS.css" text="Mage" textFill="WHITE">
+         <font>
+            <Font name="Century" size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="ClassType" />
+         </toggleGroup>
+      </ToggleButton>
+      <ToggleButton fx:id="warriorBtn" layoutX="126.0" layoutY="200.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #cc0000;" stylesheets="@characterCreatorCSS.css" text="Warrior" textFill="WHITE" toggleGroup="$ClassType">
+         <font>
+            <Font name="Century" size="14.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton fx:id="thiefBtn" layoutX="386.0" layoutY="200.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #00b359;" stylesheets="@characterCreatorCSS.css" text="Thief" textFill="WHITE" toggleGroup="$ClassType">
+         <font>
+            <Font name="Century" size="14.0" />
+         </font>
+      </ToggleButton>
+      <Button fx:id="createBtn" layoutX="266.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleCreateBtn" onMouseClicked="#handleCreateBtn" text="Create">
+         <font>
+            <Font name="Century" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

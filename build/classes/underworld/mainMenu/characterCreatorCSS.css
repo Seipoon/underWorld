@@ -1,0 +1,11 @@
+/*
+Remove unused code! Trust the process.
+*/
+/* 
+    Created on : Feb 18, 2020, 6:12:22 PM
+    Author     : Jeffrey Oh
+*/
+.toggle-button:selected{
+    -fx-border-color: white;
+    -fx-border-radius: 3px;
+}
