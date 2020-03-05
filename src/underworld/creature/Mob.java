@@ -11,29 +11,30 @@ import java.util.Map;
  * @author Jeffrey Oh
  */
 public class Mob {
-    Map<Integer,String> mobList = new HashMap<>();
+
+    Map<Integer, String> mobList = new HashMap<>();
     Map<String, Integer> hpArray = new HashMap<>();
     Map<String, Integer> atkArray = new HashMap<>();
-    
-    public Mob(){
+
+    public Mob() {
         mobList.put(1, "Slime");
         mobList.put(2, "Goblin");
         mobList.put(3, "Kobold");
-        
+
         hpArray.put("Slime", 8);
         hpArray.put("Goblin", 15);
         hpArray.put("Kobold", 20);
-        
+
         atkArray.put("Slime", 2);
         atkArray.put("Goblin", 4);
         atkArray.put("Kobold", 6);
     }
-    
-    public int getHp(String mobName){
+
+    public int getHp(String mobName) {
         return hpArray.get(mobName);
     }
-    
-    public int getAtk(String mobName){
+
+    public int getAtk(String mobName) {
         return atkArray.get(mobName);
     }
 

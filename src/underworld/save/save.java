@@ -16,23 +16,23 @@ public class save {
     private int classType;
     private String name;
     private int storyPoint;
-    
-    private HashMap <String,Integer>saveValues;
-    
-    public save(){
+
+    private HashMap<String, Integer> saveValues;
+
+    public save() {
         this.name = this.getName();
         classType = this.getClassType();
-        
+
         saveValues = new HashMap<>();
     }
-    
-    public save(String n, int cType, int sp){
+
+    public save(String n, int cType, int sp) {
         storyPoint = sp;
         name = n;
         classType = cType;
-        
+
         saveValues.put(name, 0);
-        saveValues.put(Integer.toString(classType),1);
+        saveValues.put(Integer.toString(classType), 1);
         saveValues.put(Integer.toString(storyPoint), 2);
     }
 
@@ -55,15 +55,10 @@ public class save {
     public void setStoryPoint(int storyPoint) {
         this.storyPoint = storyPoint;
     }
-    
-    public save getSave(){
-        return this;
-    }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return name + " " + classType + " " + storyPoint;
     }
 
-    
 }

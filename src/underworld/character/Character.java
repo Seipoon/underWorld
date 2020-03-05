@@ -5,40 +5,55 @@ package underworld.character;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  *
  * @author Jeffrey Oh
  */
 //attribute order goes as follows: HP, Mana, str, int, dex
 public final class Character {
-    private final Map<String,Integer> WAttr;
-    private final Map<String,Integer> MAttr;
-    private final Map<String,Integer> TAttr;
+
+    private final Map<String, Integer> WAttr;
+    private final Map<String, Integer> MAttr;
+    private final Map<String, Integer> TAttr;
     private final Warrior w;
     private final Mage m;
     private final Thief t;
     private int charaType;
     private String charaName;
 
-    public Character(){
-        
+    private Character chara;
+    // static variable single_instance of type Singleton 
+    private static Character single_instance = null;
+
+    // private constructor restricted to this class itself 
+    public Character() {
+
         WAttr = new HashMap<>();
         MAttr = new HashMap<>();
         TAttr = new HashMap<>();
-        
+
         w = new Warrior();
         m = new Mage();
         t = new Thief();
         putValues();
     }
-    
-    
+
+    // static method to create instance of Singleton class 
+    public static Character getInstance() {
+        if (single_instance == null) {
+            single_instance = new Character();
+        }
+
+        return single_instance;
+    }
+
     /**
      *
      * @return
      */
-    public Map<String, Integer> getAttr(){
-        
+    public Map<String, Integer> getAttr() {
+
         switch (charaType) {
             case 1:
                 return WAttr;
@@ -47,26 +62,26 @@ public final class Character {
             default:
                 return TAttr;
         }
-      
+
     }
-    
-    public void setCharaType(int i){
+
+    public void setCharaType(int i) {
         charaType = i;
     }
-    
-    public int getCharaType(){
+
+    public int getCharaType() {
         return charaType;
     }
-    
-    public void setCharaName(String name){
+
+    public void setCharaName(String name) {
         charaName = name;
     }
-    
-    public String getCharaName(){
+
+    public String getCharaName() {
         return charaName;
     }
-    
-    public void putValues(){
+
+    public void putValues() {
         WAttr.put("Class", w.attrArray[0]);
         WAttr.put("Heath", w.attrArray[1]);
         WAttr.put("Mana", w.attrArray[2]);
@@ -87,8 +102,5 @@ public final class Character {
         TAttr.put("Strength", t.attrArray[3]);
         TAttr.put("Intelligence", t.attrArray[4]);
         TAttr.put("Dexterity", t.attrArray[5]);
-        }
     }
-
-
-
+}

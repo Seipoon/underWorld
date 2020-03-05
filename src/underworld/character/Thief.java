@@ -8,10 +8,11 @@ package underworld.character;
  * @author Jeffrey Oh
  */
 public class Thief {
+
     //Class, HP, Mana, Strength, Intelligence, Dexterity
     int attrArray[] = {3, 12, 8, 9, 9, 12};
-    
-    public Thief(){
-      
+
+    public Thief() {
+
     }
 }

@@ -12,16 +12,18 @@ import javafx.scene.control.Button;
  * @author Jeffrey Oh
  */
 public class controlsController {
-    @FXML private Button nextBtn, backBtn;
 
-    
-    @FXML protected void handleNextBtn() throws IOException{
+    @FXML
+    private Button nextBtn, backBtn;
+
+    @FXML
+    protected void handleNextBtn() throws IOException {
         underworldapp.UnderWorld.setActiveScene("stageOneScene");
     }
-    
-    @FXML protected void handleBackBtn() throws IOException{
+
+    @FXML
+    protected void handleBackBtn() throws IOException {
         underworldapp.UnderWorld.setActiveScene("mmScene");
     }
-    
 
 }
