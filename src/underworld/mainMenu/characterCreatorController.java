@@ -110,7 +110,7 @@ public class characterCreatorController {
                 String line;
                 while ((line = br.readLine()) != null) {
                     System.out.println(line);
-                    String[] att = line.split(" ");
+                    String[] att = line.split("///");
                     chara.setCharaName(att[0]);
                     chara.setCharaType(Integer.parseInt(att[1]));
                 }

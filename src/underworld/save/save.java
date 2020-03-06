@@ -58,7 +58,7 @@ public class save {
 
     @Override
     public String toString() {
-        return name + " " + classType + " " + storyPoint;
+        return name + "///" + classType + "///" + storyPoint;
     }
 
 }
