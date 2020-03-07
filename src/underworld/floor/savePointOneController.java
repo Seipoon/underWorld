@@ -34,23 +34,27 @@ public class savePointOneController {
         chara = Character.getInstance();
 
     }
-
+    /*returns the characters name they set in the beginning,
+    the class type they selected,
+    and their current stage.
+    this needs to be edited for the next deliverable because we have to do a persistent HP Check as well.
+    */
     public String getNewData() {
         newData = chara.getCharaName() + " " + chara.getAttr().get("Class") + " " + 1;
         return newData;
     }
 
     @FXML
-    protected void handleSaveBtn(ActionEvent event) throws IOException, Exception {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+    protected void handleSaveBtn(final ActionEvent event) throws IOException, Exception {
+        final Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Save Point 1");
         alert.setContentText("Do you want to save?");
-        Optional<ButtonType> result = alert.showAndWait();
+        final Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             try (PrintWriter pw = new PrintWriter("save.txt")) {
                 pw.write(getNewData());
-                Alert ok = new Alert(AlertType.INFORMATION);
+                final Alert ok = new Alert(AlertType.INFORMATION);
                 ok.setTitle("Save Confirm");
                 ok.setHeaderText("Game Saved!");
                 ok.setContentText("Game has been successfully saved!");
@@ -59,25 +63,25 @@ public class savePointOneController {
             }
 
         } else {
-            Alert no = new Alert(AlertType.INFORMATION);
+            final Alert no = new Alert(AlertType.INFORMATION);
             no.setTitle("Save Confirm");
             no.setHeaderText("Game not Saved!?");
             no.setContentText("You didn't save! Great Job...");
 
             no.showAndWait();
-            PrintWriter pw = new PrintWriter("save.txt");
+            final PrintWriter pw = new PrintWriter("save.txt");
             pw.close();
         }
 
     }
 
     @FXML
-    protected void handleQuitBtn(ActionEvent event) throws IOException, Exception {
+    protected void handleQuitBtn(final ActionEvent event) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("mmScene");
     }
 
     @FXML
-    protected void handleContBtn(ActionEvent event) throws IOException, Exception {
+    protected void handleContBtn(final ActionEvent event) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("mmScene");
     }
 

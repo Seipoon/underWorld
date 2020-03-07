@@ -43,7 +43,7 @@ public class stageOneController implements Initializable {
     }
 
     private void playerToMobDmg() {
-        int atk = chara.getAttr().get("Strength");
+        final int atk = chara.getAttr().get("Strength");
         mobHp -= atk;
     }
 
@@ -52,7 +52,7 @@ public class stageOneController implements Initializable {
     }
 
     @FXML
-    protected void handleAttackBtn(ActionEvent e) throws IOException, Exception {
+    protected void handleAttackBtn(final ActionEvent e) throws IOException, Exception {
         if (mobHp > 0) {
             tArea.setText("You attacked the slime!");
             tArea.appendText(" You dealt " + chara.getAttr().get("Strength") + " damage!");
@@ -69,7 +69,7 @@ public class stageOneController implements Initializable {
     }
 
     @FXML
-    protected void handleAbilityBtn(ActionEvent e) throws IOException, Exception {
+    protected void handleAbilityBtn(final ActionEvent e) throws IOException, Exception {
         if (mobHp > 0) {
             if (chara.getAttr().get("Class").equals(1)) {
                 tArea.setText("You used crippling strike!");
@@ -111,17 +111,17 @@ public class stageOneController implements Initializable {
     }
 
     @FXML
-    protected void handleQuitBtn(ActionEvent e) throws IOException, Exception {
+    protected void handleQuitBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("mmScene");
     }
 
     @FXML
-    protected void handleNextBtn(ActionEvent e) throws IOException, Exception {
+    protected void handleNextBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("savePointOneScene");
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
 
         tArea.setText("A slime has bounced up to you!");
         attackBtn.setDisable(false);
