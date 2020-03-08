@@ -64,6 +64,7 @@ public final class Character {
         }
 
     }
+    
 
     public void setCharaType(int i) {
         charaType = i;

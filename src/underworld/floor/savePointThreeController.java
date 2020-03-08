@@ -19,18 +19,18 @@ import underworld.character.Character;
  *
  * @author Jeffrey Oh
  */
-public class savePointOneController {
+public class savePointThreeController {
 
     @FXML
     Button saveBtn, dontSaveBtn, quitBtn, contBtn;
     @FXML
     ImageView imgview;
-    private final stageOneController soc;
+    private final stageTwoController stc;
     private final Character chara;
     private String newData;
 
-    public savePointOneController() {
-        soc = new stageOneController();
+    public savePointThreeController() {
+        stc = new stageTwoController();
         chara = Character.getInstance();
 
     }
@@ -40,7 +40,7 @@ public class savePointOneController {
     this needs to be edited for the next deliverable because we have to do a persistent HP Check as well.
     */
     public String getNewData() {
-        newData = chara.getCharaName() + " " + chara.getAttr().get("Class") + " " + 1;
+        newData = chara.getCharaName() + " " + chara.getAttr().get("Class") + " " + 3;
         return newData;
     }
 
@@ -48,7 +48,7 @@ public class savePointOneController {
     protected void handleSaveBtn(final ActionEvent event) throws IOException, Exception {
         final Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
-        alert.setHeaderText("Save Point 1");
+        alert.setHeaderText("Save Point 3");
         alert.setContentText("Do you want to save?");
         final Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
@@ -82,7 +82,7 @@ public class savePointOneController {
 
     @FXML
     protected void handleContBtn(final ActionEvent event) throws IOException, Exception {
-        underworldapp.UnderWorld.setActiveScene("stageTwoScene");
+        underworldapp.UnderWorld.setActiveScene("finalStageScene");
     }
 
 }

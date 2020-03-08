@@ -49,15 +49,39 @@ public class UnderWorld extends Application {
         Parent controlsRoot = controlsLoader.load();
         LOADER_LIST.put("controlsScene", controlsRoot);
 
-        FXMLLoader stageOneLoader = new FXMLLoader();
-        stageOneLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/stageOne.fxml"));
-        Parent stageOneRoot = stageOneLoader.load();
-        LOADER_LIST.put("stageOneScene", stageOneRoot);
-
+        //save points
         FXMLLoader savePointOneLoader = new FXMLLoader();
         savePointOneLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/savePointOneScene.fxml"));
         Parent savePointOneRoot = savePointOneLoader.load();
         LOADER_LIST.put("savePointOneScene", savePointOneRoot);
+        
+        FXMLLoader savePointTwoLoader = new FXMLLoader();
+        savePointTwoLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/savePointTwoScene.fxml"));
+        Parent savePointTwoRoot = savePointTwoLoader.load();
+        LOADER_LIST.put("savePointTwoScene", savePointTwoRoot);
+        
+        FXMLLoader savePointThreeLoader = new FXMLLoader();
+        savePointThreeLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/savePointThreeScene.fxml"));
+        Parent savePointThreeRoot = savePointThreeLoader.load();
+        LOADER_LIST.put("savePointThreeScene", savePointThreeRoot);
+        
+        //Stages
+        FXMLLoader stageOneLoader = new FXMLLoader();
+        stageOneLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/stageOne.fxml"));
+        Parent stageOneRoot = stageOneLoader.load();
+        LOADER_LIST.put("stageOneScene", stageOneRoot);
+        
+        FXMLLoader stageTwoLoader = new FXMLLoader();
+        stageTwoLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/stageTwo.fxml"));
+        Parent stageTwoRoot = stageTwoLoader.load();
+        LOADER_LIST.put("stageTwoScene", stageTwoRoot);
+        
+        FXMLLoader stageThreeLoader = new FXMLLoader();
+        stageThreeLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/stageThree.fxml"));
+        Parent stageThreeRoot = stageThreeLoader.load();
+        LOADER_LIST.put("stageThreeScene", stageThreeRoot);
+        
+        
     }
 
     public static void setActiveScene(String name) throws IOException {
