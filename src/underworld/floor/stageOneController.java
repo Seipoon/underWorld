@@ -72,40 +72,42 @@ public class stageOneController implements Initializable {
     protected void handleAbilityBtn(final ActionEvent e) throws IOException, Exception {
         if (mobHp > 0) {
             if (chara.getAttr().get("Class").equals(1)) {
-                tArea.setText("You used crippling strike!");
+                tArea.setText("You used crippling strike! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Strength") + 3) + " damage!");
                 playerToMobDmg();
+                if (mobHp == 0 || mobHp < 0) {
+                    tArea.appendText(" You have slain the slime! You're cruel and definetly hate small animals...");
+                    nextBtn.setVisible(true);
+                    nextBtn.setOpacity(1);
+                    attackBtn.setDisable(true);
+                    abilityBtn.setDisable(true);
+                } 
             }
-            if (mobHp == 0 || mobHp < 0) {
-                tArea.appendText(" You have slain the slime! You're cruel and definetly hate small animals...");
-                nextBtn.setVisible(true);
-                nextBtn.setOpacity(1);
-                attackBtn.setDisable(true);
-                abilityBtn.setDisable(true);
-            }
+            
             if (chara.getAttr().get("Class").equals(2)) {
-                tArea.setText("You used fireball!");
+                tArea.setText("You used fireball! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Intelligence") + 3) + " damage!");
                 playerToMobDmg();
+                if (mobHp == 0 || mobHp < 0) {
+                    tArea.appendText(" You have slain the slime! You're cruel and definetly hate small animals...");
+                    nextBtn.setVisible(true);
+                    nextBtn.setOpacity(1);
+                    attackBtn.setDisable(true);
+                    abilityBtn.setDisable(true);
+                }
             }
-            if (mobHp == 0 || mobHp < 0) {
-                tArea.appendText(" You have slain the slime! You're cruel and definetly hate small animals...");
-                nextBtn.setVisible(true);
-                nextBtn.setOpacity(1);
-                attackBtn.setDisable(true);
-                abilityBtn.setDisable(true);
-            }
+            
             if (chara.getAttr().get("Class").equals(3)) {
-                tArea.setText("You used backstab!");
+                tArea.setText("You used backstab! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Dexterity") + 3) + " damage!");
                 playerToMobDmg();
-            }
-            if (mobHp == 0 || mobHp < 0) {
-                tArea.appendText(" You have slain the slime! You're cruel and definetly hate small animals...");
-                nextBtn.setVisible(true);
-                nextBtn.setOpacity(1);
-                attackBtn.setDisable(true);
-                abilityBtn.setDisable(true);
+                if (mobHp == 0 || mobHp < 0) {
+                    tArea.appendText(" You have slain the slime! You're cruel and definetly hate small animals...");
+                    nextBtn.setVisible(true);
+                    nextBtn.setOpacity(1);
+                    attackBtn.setDisable(true);
+                    abilityBtn.setDisable(true);
+                }
             }
         }
     }
