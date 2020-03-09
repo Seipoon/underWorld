@@ -18,6 +18,7 @@ public class controlsController {
 
     @FXML
     protected void handleNextBtn() throws IOException {
+        underworldapp.UnderWorld.setCurrentStage("stageOneScene");
         underworldapp.UnderWorld.setActiveScene("stageOneScene");
     }
 

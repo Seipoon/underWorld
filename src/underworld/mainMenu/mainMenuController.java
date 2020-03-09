@@ -39,9 +39,20 @@ public class mainMenuController {
 
     @FXML
     protected void handleStartBtn(ActionEvent event) throws IOException {
-        underworldapp.UnderWorld.setActiveScene("controlsScene");
-        System.out.println();
-
+        switch (underworldapp.UnderWorld.getCurrentStage()) {
+            case "stageTwo":
+                underworldapp.UnderWorld.setActiveScene("stageTwoScene");
+                break;
+            case "stageThree":
+                underworldapp.UnderWorld.setActiveScene("stageThreeScene");
+                break;
+            case "stageOne":
+                underworldapp.UnderWorld.setActiveScene("stageOneScene");
+                break;
+            default:
+                underworldapp.UnderWorld.setActiveScene("controlsScene");
+                break;
+        }
     }
 
     @FXML

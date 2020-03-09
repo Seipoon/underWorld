@@ -10,7 +10,7 @@ package underworld.character;
 public class Mage {
 
     //Class, HP, Mana, Strength, Intelligence, Dexterity
-    int attrArray[] = {2, 15, 10, 8, 12, 8};
+    int attrArray[] = {2, 20, 10, 8, 12, 8};
 
     public Mage() {
 

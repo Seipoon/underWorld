@@ -21,11 +21,14 @@ public class UnderWorld extends Application {
 
     private static final HashMap<String, Parent> LOADER_LIST = new HashMap<>();
     private static Stage stage;
+    private static String currentStage;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         UnderWorld.stage = primaryStage;
+        currentStage = "controlsScene";
         setupItems();
+        
 
         primaryStage.setTitle("UnderWorld");
         setActiveScene("mmScene");
@@ -79,9 +82,7 @@ public class UnderWorld extends Application {
         FXMLLoader stageThreeLoader = new FXMLLoader();
         stageThreeLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/stageThree.fxml"));
         Parent stageThreeRoot = stageThreeLoader.load();
-        LOADER_LIST.put("stageThreeScene", stageThreeRoot);
-        
-        
+        LOADER_LIST.put("stageThreeScene", stageThreeRoot);      
     }
 
     public static void setActiveScene(String name) throws IOException {
@@ -93,6 +94,14 @@ public class UnderWorld extends Application {
             scene = tempRoot.getScene();
         }
         stage.setScene(scene);
+    }
+    
+    public static void setCurrentStage(String thisStage){
+        currentStage = thisStage;
+    }
+    
+    public static String getCurrentStage(){
+        return currentStage;
     }
 
     /**

@@ -25,12 +25,12 @@ public class savePointTwoController {
     Button saveBtn, dontSaveBtn, quitBtn, contBtn;
     @FXML
     ImageView imgview;
-    private final stageTwoController stc;
+    private final stageThreeController stc;
     private final Character chara;
     private String newData;
 
     public savePointTwoController() {
-        stc = new stageTwoController();
+        stc = new stageThreeController();
         chara = Character.getInstance();
 
     }
@@ -58,7 +58,7 @@ public class savePointTwoController {
                 ok.setTitle("Save Confirm");
                 ok.setHeaderText("Game Saved!");
                 ok.setContentText("Game has been successfully saved!");
-
+                underworldapp.UnderWorld.setCurrentStage("stageThree");
                 ok.showAndWait();
             }
 
@@ -82,7 +82,9 @@ public class savePointTwoController {
 
     @FXML
     protected void handleContBtn(final ActionEvent event) throws IOException, Exception {
+        
         underworldapp.UnderWorld.setActiveScene("stageThreeScene");
+        
     }
 
 }

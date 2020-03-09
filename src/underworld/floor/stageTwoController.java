@@ -11,31 +11,36 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 import underworld.creature.Mob;
 import underworld.mainMenu.characterCreatorController;
+import underworld.character.Character;
 
 /**
  *
  * @author Jeffrey Oh
  */
-public class stageTwoController implements Initializable{
+public class stageTwoController implements Initializable {
+
     @FXML
-    private Button attackBtn;
-    @FXML
-    private Button abilityBtn;
-    @FXML
-    private Button quitBtn, nextBtn;
+    private Button attackBtn, quitBtn, nextBtn, abilityBtn;
     @FXML
     private TextArea tArea;
+    @FXML
+    private Text mobHpText, playerHpText;
+    
     private final characterCreatorController ccc;
-
+    private int currentHp;
     private final underworld.character.Character chara;
-
+    
     private final Mob mob = new Mob();
     private int mobHp = mob.getHp("Goblin");
     private final int mobAtk = mob.getAtk("Goblin");
 
     public stageTwoController() {
+        playerHpText = new Text();
+        mobHpText = new Text();
+        currentHp = 20;
         ccc = new characterCreatorController();
         chara = ccc.fetchChara();
     }
@@ -43,10 +48,33 @@ public class stageTwoController implements Initializable{
     private void playerToMobDmg() {
         final int atk = chara.getAttr().get("Strength");
         mobHp -= atk;
+        mobHpText.setText(Integer.toString(mobHp));
     }
 
-    public underworld.character.Character fetchChara() {
+    public Character fetchChara() {
         return chara;
+    }
+    
+    private void setCurrentHp(){
+        chara.getAttr().put("Health", currentHp);
+        playerHpText.setText(Integer.toString(currentHp));
+    }
+    
+    private void mobToPlayerDmg(){
+        tArea.appendText("\nThe Goblin slashes at you! It dealt " + mobAtk + " damage!");
+        currentHp -= mobAtk;
+    }
+    
+    private boolean checkIfMobDead(){
+        if (mobHp == 0 || mobHp < 0) {
+            tArea.appendText("\nYou have slain the Goblin!\nYou're cruel but its okay, it was kind of ugly...");
+            nextBtn.setVisible(true);
+            nextBtn.setOpacity(1);
+            attackBtn.setDisable(true);
+            abilityBtn.setDisable(true);
+            return true;
+        }
+        else return false;
     }
 
     @FXML
@@ -55,15 +83,14 @@ public class stageTwoController implements Initializable{
             tArea.setText("You attacked the Goblin!");
             tArea.appendText(" You dealt " + chara.getAttr().get("Strength") + " damage!");
             playerToMobDmg();
-        }
-
-        if (mobHp == 0 || mobHp < 0) {
-            tArea.appendText(" You have slain the Goblin! You're cruel but it's okay it was kind of ugly...");
-            nextBtn.setVisible(true);
-            nextBtn.setOpacity(1);
-            attackBtn.setDisable(true);
-            abilityBtn.setDisable(true);
-        }
+            if(checkIfMobDead()){
+            
+            }
+            else{
+                mobToPlayerDmg();
+                setCurrentHp();
+            }
+        }  
     }
 
     @FXML
@@ -73,25 +100,25 @@ public class stageTwoController implements Initializable{
                 tArea.setText("You used crippling strike! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Strength") + 3) + " damage!");
                 playerToMobDmg();
-                if (mobHp == 0 || mobHp < 0) {
-                    tArea.appendText(" You have slain the Goblin! You're cruel but it's okay it was kind of ugly...");
-                    nextBtn.setVisible(true);
-                    nextBtn.setOpacity(1);
-                    attackBtn.setDisable(true);
-                    abilityBtn.setDisable(true);
-                } 
+                if(checkIfMobDead()){
+            
+                }
+                else{
+                    mobToPlayerDmg();
+                    setCurrentHp();
+                }
             }
             
             if (chara.getAttr().get("Class").equals(2)) {
                 tArea.setText("You used fireball! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Intelligence") + 3) + " damage!");
                 playerToMobDmg();
-                if (mobHp == 0 || mobHp < 0) {
-                    tArea.appendText(" You have slain the Goblin! You're cruel but it's okay it was kind of ugly...");
-                    nextBtn.setVisible(true);
-                    nextBtn.setOpacity(1);
-                    attackBtn.setDisable(true);
-                    abilityBtn.setDisable(true);
+                if(checkIfMobDead()){
+            
+                }
+                else{
+                    mobToPlayerDmg();
+                    setCurrentHp();
                 }
             }
             
@@ -99,12 +126,12 @@ public class stageTwoController implements Initializable{
                 tArea.setText("You used backstab! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Dexterity") + 3) + " damage!");
                 playerToMobDmg();
-                if (mobHp == 0 || mobHp < 0) {
-                    tArea.appendText(" You have slain the Goblin! You're cruel but it's okay it was kind of ugly...");
-                    nextBtn.setVisible(true);
-                    nextBtn.setOpacity(1);
-                    attackBtn.setDisable(true);
-                    abilityBtn.setDisable(true);
+                if(checkIfMobDead()){
+            
+                }
+                else{
+                    mobToPlayerDmg();
+                    setCurrentHp();
                 }
             }
         }
@@ -122,10 +149,11 @@ public class stageTwoController implements Initializable{
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-
+        playerHpText.setText(Integer.toString(currentHp));
+        mobHpText.setText(Integer.toString(mobHp));
         tArea.setText("A Goblin has appeared out of the darkness!");
         attackBtn.setDisable(false);
         abilityBtn.setDisable(false);
     }
-    
+
 }

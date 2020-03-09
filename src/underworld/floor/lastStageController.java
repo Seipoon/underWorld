@@ -20,7 +20,7 @@ import underworld.character.Character;
  *
  * @author Jeffrey Oh
  */
-public class stageThreeController implements Initializable {
+public class lastStageController implements Initializable {
 
     @FXML
     private Button attackBtn, quitBtn, nextBtn, abilityBtn;
@@ -34,16 +34,13 @@ public class stageThreeController implements Initializable {
     private final underworld.character.Character chara;
     
     private final Mob mob = new Mob();
-    private int mobHp = mob.getHp("Kobold");
-    private final int mobAtk = mob.getAtk("Kobold");
+    private int mobHp = mob.getHp("Null Pointer Exception");
+    private final int mobAtk = mob.getAtk("Null Pointer Exception");
 
-    public stageThreeController() {
+    public lastStageController() {
         playerHpText = new Text();
         mobHpText = new Text();
         currentHp = 20;
-        playerHpText.setText(Integer.toString(currentHp));
-        mobHpText.setText(Integer.toString(mobHp));
-        
         ccc = new characterCreatorController();
         chara = ccc.fetchChara();
     }
@@ -64,13 +61,13 @@ public class stageThreeController implements Initializable {
     }
     
     private void mobToPlayerDmg(){
-        tArea.appendText("\nThe Kobold slashes at you! It dealt " + mobAtk + " damage!");
+        tArea.appendText("The Null Pointer Exception has pissed you off! It dealt " + mobAtk + " damage!");
         currentHp -= mobAtk;
     }
     
     private boolean checkIfMobDead(){
         if (mobHp == 0 || mobHp < 0) {
-            tArea.appendText("\nYou have slain the Kobold!\nYou smell treasures!");
+            tArea.appendText("\nYou have slain the Null Pointer Exception!\nYou saved your project!");
             nextBtn.setVisible(true);
             nextBtn.setOpacity(1);
             attackBtn.setDisable(true);
@@ -83,7 +80,7 @@ public class stageThreeController implements Initializable {
     @FXML
     protected void handleAttackBtn(final ActionEvent e) throws IOException, Exception {
         if (mobHp > 0) {
-            tArea.setText("You attacked the Kobold!");
+            tArea.setText("You attacked the Null Pointer Exception!");
             tArea.appendText(" You dealt " + chara.getAttr().get("Strength") + " damage!");
             playerToMobDmg();
             if(checkIfMobDead()){
@@ -147,14 +144,18 @@ public class stageThreeController implements Initializable {
 
     @FXML
     protected void handleNextBtn(final ActionEvent e) throws IOException, Exception {
-        underworldapp.UnderWorld.setActiveScene("savePointThreeScene");
+        underworldapp.UnderWorld.setActiveScene("savePointOneScene");
     }
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        tArea.setText("A Kobold has appeared out of the darkness!");
+        playerHpText.setText(Integer.toString(currentHp));
+        mobHpText.setText(Integer.toString(mobHp));
+
+        tArea.setText("A Null Pointer Exception has occured lol just kidding!\nFINAL BOSS APPROACHES!");
         attackBtn.setDisable(false);
         abilityBtn.setDisable(false);
     }
 
 }
+

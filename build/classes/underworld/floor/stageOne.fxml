@@ -18,5 +18,25 @@
       </Text>
       <TextArea fx:id="tArea" editable="false" layoutX="127.0" layoutY="91.0" prefHeight="200.0" prefWidth="345.0" wrapText="true" />
       <Button fx:id="nextBtn" layoutX="516.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleNextBtn" opacity="0.0" text="Next" />
+      <Text layoutX="37.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="512.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slime">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="playerHpText" layoutX="37.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP: ">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="mobHpText" layoutX="516.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP: " wrappingWidth="82.93359375">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -10,7 +10,7 @@ package underworld.character;
 public class Warrior {
 
     //Class, HP, Mana, Strength, Intelligence, Dexterity
-    int attrArray[] = {1, 18, 6, 12, 6, 6};
+    int attrArray[] = {1, 20, 6, 12, 6, 6};
 
     public Warrior() {
 

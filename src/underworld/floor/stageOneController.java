@@ -30,23 +30,23 @@ public class stageOneController implements Initializable {
     private Text mobHpText, playerHpText;
     
     private final characterCreatorController ccc;
-
-    private final underworld.character.Character chara;
     private int currentHp;
+    private final underworld.character.Character chara;
     
     private final Mob mob = new Mob();
     private int mobHp = mob.getHp("Slime");
     private final int mobAtk = mob.getAtk("Slime");
 
     public stageOneController() {
+        currentHp = 20;
         ccc = new characterCreatorController();
         chara = ccc.fetchChara();
-        currentHp = chara.getAttr().get("Health");
     }
 
     private void playerToMobDmg() {
         final int atk = chara.getAttr().get("Strength");
         mobHp -= atk;
+        mobHpText.setText(Integer.toString(mobHp));
     }
 
     public Character fetchChara() {
@@ -59,13 +59,13 @@ public class stageOneController implements Initializable {
     }
     
     private void mobToPlayerDmg(){
-        tArea.setText("The Slime tackled into you! It dealt " + mobAtk + " damage!");
+        tArea.appendText("The Slime tackled into you! It dealt " + mobAtk + " damage!");
         currentHp -= mobAtk;
     }
     
     private boolean checkIfMobDead(){
         if (mobHp == 0 || mobHp < 0) {
-            tArea.appendText(" You have slain the slime! You're cruel and definetly hate small animals...");
+            tArea.appendText("\nYou have slain the slime!\nYou're cruel and definetly hate small animals...");
             nextBtn.setVisible(true);
             nextBtn.setOpacity(1);
             attackBtn.setDisable(true);
@@ -81,14 +81,14 @@ public class stageOneController implements Initializable {
             tArea.setText("You attacked the slime!");
             tArea.appendText(" You dealt " + chara.getAttr().get("Strength") + " damage!");
             playerToMobDmg();
-        }
-        if(checkIfMobDead()){
+            if(checkIfMobDead()){
             
-        }
-        else{
-            mobToPlayerDmg();
-            setCurrentHp();
-        }
+            }
+            else{
+                mobToPlayerDmg();
+                setCurrentHp();
+            }
+        }  
     }
 
     @FXML
@@ -147,6 +147,8 @@ public class stageOneController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
+        playerHpText.setText(Integer.toString(currentHp));
+        mobHpText.setText(Integer.toString(mobHp));
 
         tArea.setText("A slime has bounced up to you!");
         attackBtn.setDisable(false);

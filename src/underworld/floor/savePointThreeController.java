@@ -25,14 +25,13 @@ public class savePointThreeController {
     Button saveBtn, dontSaveBtn, quitBtn, contBtn;
     @FXML
     ImageView imgview;
-    private final stageTwoController stc;
+    private final lastStageController stc;
     private final Character chara;
     private String newData;
 
     public savePointThreeController() {
-        stc = new stageTwoController();
+        stc = new lastStageController();
         chara = Character.getInstance();
-
     }
     /*returns the characters name they set in the beginning,
     the class type they selected,
@@ -58,7 +57,7 @@ public class savePointThreeController {
                 ok.setTitle("Save Confirm");
                 ok.setHeaderText("Game Saved!");
                 ok.setContentText("Game has been successfully saved!");
-
+                underworldapp.UnderWorld.setCurrentStage("finalStage");
                 ok.showAndWait();
             }
 
