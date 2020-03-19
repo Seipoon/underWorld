@@ -48,6 +48,12 @@ public class stageOneController implements Initializable {
         mobHp -= atk;
         mobHpText.setText(Integer.toString(mobHp));
     }
+    
+    private void playerToMobAbilityDmg(String statType, int dmgBoost){
+        final int atk = chara.getAttr().get(statType);
+        mobHp -= (atk + dmgBoost);
+        mobHpText.setText(Integer.toString(mobHp));
+    }
 
     public Character fetchChara() {
         return chara;
@@ -97,7 +103,7 @@ public class stageOneController implements Initializable {
             if (chara.getAttr().get("Class").equals(1)) {
                 tArea.setText("You used crippling strike! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Strength") + 3) + " damage!");
-                playerToMobDmg();
+                playerToMobAbilityDmg("Strength",3);
                 if(checkIfMobDead()){
             
                 }
@@ -110,7 +116,7 @@ public class stageOneController implements Initializable {
             if (chara.getAttr().get("Class").equals(2)) {
                 tArea.setText("You used fireball! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Intelligence") + 3) + " damage!");
-                playerToMobDmg();
+                playerToMobAbilityDmg("Intelligence",3);
                 if(checkIfMobDead()){
             
                 }
@@ -123,7 +129,7 @@ public class stageOneController implements Initializable {
             if (chara.getAttr().get("Class").equals(3)) {
                 tArea.setText("You used backstab! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Dexterity") + 3) + " damage!");
-                playerToMobDmg();
+                playerToMobAbilityDmg("Dexterity",3);
                 if(checkIfMobDead()){
             
                 }
@@ -138,6 +144,7 @@ public class stageOneController implements Initializable {
     @FXML
     protected void handleQuitBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("mmScene");
+        resetAllFields();
     }
 
     @FXML
@@ -153,6 +160,14 @@ public class stageOneController implements Initializable {
         tArea.setText("A slime has bounced up to you!");
         attackBtn.setDisable(false);
         abilityBtn.setDisable(false);
+    }
+    
+     private void resetAllFields(){
+        playerHpText.setText(chara.getAttr().get("Health").toString());
+        mobHpText.setText(Integer.toString(mob.getHp("Kobold")));
+        tArea.setText("A Kobold approaches you!");
+        currentHp = 20;
+        mobHp = mob.getHp("Slime");
     }
 
 }

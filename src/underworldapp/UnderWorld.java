@@ -82,7 +82,14 @@ public class UnderWorld extends Application {
         FXMLLoader stageThreeLoader = new FXMLLoader();
         stageThreeLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/stageThree.fxml"));
         Parent stageThreeRoot = stageThreeLoader.load();
-        LOADER_LIST.put("stageThreeScene", stageThreeRoot);      
+        LOADER_LIST.put("stageThreeScene", stageThreeRoot);
+        
+        FXMLLoader lastStageLoader = new FXMLLoader();
+        lastStageLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/lastStage.fxml"));
+        Parent lastStageRoot = lastStageLoader.load();
+        LOADER_LIST.put("finalStageScene", lastStageRoot); 
+        
+        
     }
 
     public static void setActiveScene(String name) throws IOException {

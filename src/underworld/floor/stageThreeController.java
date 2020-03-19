@@ -53,6 +53,12 @@ public class stageThreeController implements Initializable {
         mobHp -= atk;
         mobHpText.setText(Integer.toString(mobHp));
     }
+    
+    private void playerToMobAbilityDmg(String statType, int dmgBoost){
+        final int atk = chara.getAttr().get(statType);
+        mobHp -= (atk + dmgBoost);
+        mobHpText.setText(Integer.toString(mobHp));
+    }
 
     public Character fetchChara() {
         return chara;
@@ -102,7 +108,7 @@ public class stageThreeController implements Initializable {
             if (chara.getAttr().get("Class").equals(1)) {
                 tArea.setText("You used crippling strike! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Strength") + 3) + " damage!");
-                playerToMobDmg();
+                playerToMobAbilityDmg("Strength",3);
                 if(checkIfMobDead()){
             
                 }
@@ -115,7 +121,7 @@ public class stageThreeController implements Initializable {
             if (chara.getAttr().get("Class").equals(2)) {
                 tArea.setText("You used fireball! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Intelligence") + 3) + " damage!");
-                playerToMobDmg();
+                playerToMobAbilityDmg("Intelligence",3);
                 if(checkIfMobDead()){
             
                 }
@@ -128,7 +134,7 @@ public class stageThreeController implements Initializable {
             if (chara.getAttr().get("Class").equals(3)) {
                 tArea.setText("You used backstab! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Dexterity") + 3) + " damage!");
-                playerToMobDmg();
+                playerToMobAbilityDmg("Dexterity",3);
                 if(checkIfMobDead()){
             
                 }
@@ -143,6 +149,7 @@ public class stageThreeController implements Initializable {
     @FXML
     protected void handleQuitBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("mmScene");
+        resetAllFields();
     }
 
     @FXML
@@ -152,9 +159,19 @@ public class stageThreeController implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
-        tArea.setText("A Kobold has appeared out of the darkness!");
+        playerHpText.setText(Integer.toString(currentHp));
+        mobHpText.setText(Integer.toString(mobHp));
+        tArea.setText("A Kobold approaches you!");
         attackBtn.setDisable(false);
         abilityBtn.setDisable(false);
+    }
+    
+    private void resetAllFields(){
+        playerHpText.setText("20");
+        mobHpText.setText(Integer.toString(mob.getHp("Kobold")));
+        tArea.setText("A Kobold approaches you!");
+        mobHp = mob.getHp("Kobold");
+        currentHp = 20;
     }
 
 }

@@ -39,19 +39,34 @@ public class mainMenuController {
 
     @FXML
     protected void handleStartBtn(ActionEvent event) throws IOException {
-        switch (underworldapp.UnderWorld.getCurrentStage()) {
-            case "stageTwo":
-                underworldapp.UnderWorld.setActiveScene("stageTwoScene");
-                break;
-            case "stageThree":
-                underworldapp.UnderWorld.setActiveScene("stageThreeScene");
-                break;
-            case "stageOne":
-                underworldapp.UnderWorld.setActiveScene("stageOneScene");
-                break;
-            default:
-                underworldapp.UnderWorld.setActiveScene("controlsScene");
-                break;
+//        switch (underworldapp.UnderWorld.getCurrentStage()) {
+//            case "stageTwo":
+//                underworldapp.UnderWorld.setActiveScene("stageTwoScene");
+//                break;
+//            case "stageThree":
+//                underworldapp.UnderWorld.setActiveScene("stageThreeScene");
+//                break;
+//            case "stageOne":
+//                underworldapp.UnderWorld.setActiveScene("stageOneScene");
+//                break;
+//            default:
+//                underworldapp.UnderWorld.setActiveScene("controlsScene");
+//                break;
+//        }
+        if(splitAndGetSavePoint().equals("1")){
+            underworldapp.UnderWorld.setActiveScene("stageOneScene");
+        }
+        else if(splitAndGetSavePoint().equals("2")){
+            underworldapp.UnderWorld.setActiveScene("stageTwoScene");
+        }
+        else if (splitAndGetSavePoint().equals("3")){
+            underworldapp.UnderWorld.setActiveScene("stageThreeScene");
+        }
+        else if (splitAndGetSavePoint().equals("4")){
+            underworldapp.UnderWorld.setActiveScene("finalStageScene");
+        }
+        else{
+            underworldapp.UnderWorld.setActiveScene("controlsScene");
         }
     }
 
@@ -84,5 +99,12 @@ public class mainMenuController {
         deleteBtn.setDisable(true);
         newBtn.setDisable(false);
     }
-
+    
+    private String splitAndGetSavePoint()throws FileNotFoundException, IOException{
+        FileReader reader = new FileReader("save.txt");
+        BufferedReader br = new BufferedReader(reader);
+        String line = br.readLine();
+        String[] split = line.split("///");
+        return split[2];
+    }
 }
