@@ -37,12 +37,13 @@ public class stageTwoController implements Initializable {
     private int mobHp = mob.getHp("Goblin");
     private final int mobAtk = mob.getAtk("Goblin");
 
-    public stageTwoController() {
+    public stageTwoController() throws IOException {
         playerHpText = new Text();
         mobHpText = new Text();
         currentHp = 20;
         ccc = new characterCreatorController();
         chara = ccc.fetchChara();
+        chara.setCharaValues();
     }
 
     private void playerToMobDmg() {

@@ -3,6 +3,10 @@
  */
 package underworld.character;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +26,6 @@ public final class Character {
     private int charaType;
     private String charaName;
 
-    private Character chara;
     // static variable single_instance of type Singleton 
     private static Character single_instance = null;
 
@@ -64,7 +67,6 @@ public final class Character {
         }
 
     }
-    
 
     public void setCharaType(int i) {
         charaType = i;
@@ -80,6 +82,21 @@ public final class Character {
 
     public String getCharaName() {
         return charaName;
+    }
+
+    public void setCharaValues() throws FileNotFoundException, IOException {
+        try (FileReader reader = new FileReader("save.txt");
+                BufferedReader br = new BufferedReader(reader)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] att = line.split("///");
+                this.setCharaName(att[0]);
+                this.setCharaType(Integer.parseInt(att[1]));
+            }
+
+        } catch (IOException e) {
+            System.err.format("IOException: %s%n", e);
+        }
     }
 
     public void putValues() {

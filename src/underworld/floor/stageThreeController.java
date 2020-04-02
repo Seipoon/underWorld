@@ -37,7 +37,7 @@ public class stageThreeController implements Initializable {
     private int mobHp = mob.getHp("Kobold");
     private final int mobAtk = mob.getAtk("Kobold");
 
-    public stageThreeController() {
+    public stageThreeController() throws IOException {
         playerHpText = new Text();
         mobHpText = new Text();
         currentHp = 20;
@@ -46,6 +46,7 @@ public class stageThreeController implements Initializable {
         
         ccc = new characterCreatorController();
         chara = ccc.fetchChara();
+        chara.setCharaValues();
     }
 
     private void playerToMobDmg() {

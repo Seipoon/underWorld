@@ -28,21 +28,22 @@ public class lastStageController implements Initializable {
     private TextArea tArea;
     @FXML
     private Text mobHpText, playerHpText;
-    
+
     private final characterCreatorController ccc;
     private int currentHp;
     private final underworld.character.Character chara;
-    
+
     private final Mob mob = new Mob();
     private int mobHp = mob.getHp("Null Pointer Exception");
     private final int mobAtk = mob.getAtk("Null Pointer Exception");
 
-    public lastStageController() {
+    public lastStageController() throws IOException {
         playerHpText = new Text();
         mobHpText = new Text();
         currentHp = 20;
         ccc = new characterCreatorController();
         chara = ccc.fetchChara();
+        chara.setCharaValues();
     }
 
     private void playerToMobDmg() {
@@ -50,8 +51,8 @@ public class lastStageController implements Initializable {
         mobHp -= atk;
         mobHpText.setText(Integer.toString(mobHp));
     }
-    
-    private void playerToMobAbilityDmg(String statType, int dmgBoost){
+
+    private void playerToMobAbilityDmg(String statType, int dmgBoost) {
         final int atk = chara.getAttr().get(statType);
         mobHp -= (atk + dmgBoost);
         mobHpText.setText(Integer.toString(mobHp));
@@ -60,18 +61,18 @@ public class lastStageController implements Initializable {
     public Character fetchChara() {
         return chara;
     }
-    
-    private void setCurrentHp(){
+
+    private void setCurrentHp() {
         chara.getAttr().put("Health", currentHp);
         playerHpText.setText(Integer.toString(currentHp));
     }
-    
-    private void mobToPlayerDmg(){
+
+    private void mobToPlayerDmg() {
         tArea.appendText("The Null Pointer Exception has pissed you off! It dealt " + mobAtk + " damage!");
         currentHp -= mobAtk;
     }
-    
-    private boolean checkIfMobDead(){
+
+    private boolean checkIfMobDead() {
         if (mobHp == 0 || mobHp < 0) {
             tArea.appendText("\nYou have slain the Null Pointer Exception!\nYou saved your project!");
             nextBtn.setVisible(true);
@@ -79,8 +80,9 @@ public class lastStageController implements Initializable {
             attackBtn.setDisable(true);
             abilityBtn.setDisable(true);
             return true;
+        } else {
+            return false;
         }
-        else return false;
     }
 
     @FXML
@@ -89,14 +91,13 @@ public class lastStageController implements Initializable {
             tArea.setText("You attacked the Null Pointer Exception!");
             tArea.appendText(" You dealt " + chara.getAttr().get("Strength") + " damage!");
             playerToMobDmg();
-            if(checkIfMobDead()){
-            
-            }
-            else{
+            if (checkIfMobDead()) {
+
+            } else {
                 mobToPlayerDmg();
                 setCurrentHp();
             }
-        }  
+        }
     }
 
     @FXML
@@ -105,37 +106,34 @@ public class lastStageController implements Initializable {
             if (chara.getAttr().get("Class").equals(1)) {
                 tArea.setText("You used crippling strike! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Strength") + 3) + " damage!");
-                playerToMobAbilityDmg("Strength",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Strength", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
             }
-            
+
             if (chara.getAttr().get("Class").equals(2)) {
                 tArea.setText("You used fireball! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Intelligence") + 3) + " damage!");
-                playerToMobAbilityDmg("Intelligence",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Intelligence", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
             }
-            
+
             if (chara.getAttr().get("Class").equals(3)) {
                 tArea.setText("You used backstab! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Dexterity") + 3) + " damage!");
-                playerToMobAbilityDmg("Dexterity",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Dexterity", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
@@ -151,6 +149,7 @@ public class lastStageController implements Initializable {
     @FXML
     protected void handleNextBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("mmScene");
+        resetAllFields();
     }
 
     @Override
@@ -163,5 +162,12 @@ public class lastStageController implements Initializable {
         abilityBtn.setDisable(false);
     }
 
-}
+    private void resetAllFields() {
+        playerHpText.setText("20");
+        mobHpText.setText(Integer.toString(mob.getHp("Null Pointer Exception")));
+        tArea.setText("A Null Pointer Exception has occured lol just kidding!\nFINAL BOSS APPROACHES!");
+        currentHp = 20;
+        mobHp = mob.getHp("Null Pointer Exception");
+    }
 
+}

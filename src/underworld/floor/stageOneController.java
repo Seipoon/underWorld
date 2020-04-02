@@ -37,10 +37,11 @@ public class stageOneController implements Initializable {
     private int mobHp = mob.getHp("Slime");
     private final int mobAtk = mob.getAtk("Slime");
 
-    public stageOneController() {
+    public stageOneController() throws IOException {
         currentHp = 20;
         ccc = new characterCreatorController();
         chara = ccc.fetchChara();
+        chara.setCharaValues();
     }
 
     private void playerToMobDmg() {
@@ -166,7 +167,7 @@ public class stageOneController implements Initializable {
      private void resetAllFields(){
         playerHpText.setText("20");
         mobHpText.setText(Integer.toString(mob.getHp("Slime")));
-        tArea.setText("A Kobold approaches you!");
+        tArea.setText("A slime has bounced up to you!");
         currentHp = 20;
         mobHp = mob.getHp("Slime");
     }
