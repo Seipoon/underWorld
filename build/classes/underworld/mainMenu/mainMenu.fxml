@@ -30,11 +30,6 @@
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="loadBtn" disable="true" mnemonicParsing="false" onAction="#handleLoadBtn" onMouseClicked="#handleLoadBtn" prefWidth="90.0" text="Load Game">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-            </Button>
             <Button fx:id="deleteBtn" disable="true" mnemonicParsing="false" onAction="#handleDeleteBtn" prefWidth="90.0" text="Delete Save" />
          </children>
       </VBox>

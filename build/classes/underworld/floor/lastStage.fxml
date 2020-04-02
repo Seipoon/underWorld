@@ -23,9 +23,9 @@
             <Font name="Century Gothic" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="512.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NULL POINTER EXCEPTION">
+      <Text layoutX="482.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NULL POINTER EXCEPTION" wrappingWidth="118.93359375">
          <font>
-            <Font name="Century Gothic" size="24.0" />
+            <Font name="Century Gothic" size="18.0" />
          </font>
       </Text>
       <Text fx:id="playerHpText" layoutX="37.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP: ">
@@ -33,7 +33,7 @@
             <Font name="Century Gothic" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="mobHpText" layoutX="516.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP: " wrappingWidth="82.93359375">
+      <Text fx:id="mobHpText" layoutX="489.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP: " wrappingWidth="82.93359375">
          <font>
             <Font name="Century Gothic" size="20.0" />
          </font>

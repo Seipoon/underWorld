@@ -25,8 +25,6 @@ public class mainMenuController {
     @FXML
     private Button newBtn;
     @FXML
-    private Button loadBtn;
-    @FXML
     private Button deleteBtn;
 
     @FXML
@@ -39,20 +37,6 @@ public class mainMenuController {
 
     @FXML
     protected void handleStartBtn(ActionEvent event) throws IOException {
-//        switch (underworldapp.UnderWorld.getCurrentStage()) {
-//            case "stageTwo":
-//                underworldapp.UnderWorld.setActiveScene("stageTwoScene");
-//                break;
-//            case "stageThree":
-//                underworldapp.UnderWorld.setActiveScene("stageThreeScene");
-//                break;
-//            case "stageOne":
-//                underworldapp.UnderWorld.setActiveScene("stageOneScene");
-//                break;
-//            default:
-//                underworldapp.UnderWorld.setActiveScene("controlsScene");
-//                break;
-//        }
         if(splitAndGetSavePoint().equals("1")){
             underworldapp.UnderWorld.setActiveScene("stageOneScene");
         }
@@ -68,12 +52,6 @@ public class mainMenuController {
         else{
             underworldapp.UnderWorld.setActiveScene("controlsScene");
         }
-    }
-
-    @FXML
-    protected void handleLoadBtn(ActionEvent event) throws IOException {
-//        System.out.println("This feature is still not yet implemented!");
-//        underworldapp.UnderWorld.setActiveScene("mmScene");
     }
 
     @FXML

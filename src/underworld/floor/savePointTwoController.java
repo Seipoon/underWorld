@@ -40,7 +40,7 @@ public class savePointTwoController {
     this needs to be edited for the next deliverable because we have to do a persistent HP Check as well.
     */
     public String getNewData() {
-        newData = chara.getCharaName() + " " + chara.getAttr().get("Class") + " " + 2;
+        newData = chara.getCharaName() + "///" + chara.getAttr().get("Class") + "///" + 2;
         return newData;
     }
 

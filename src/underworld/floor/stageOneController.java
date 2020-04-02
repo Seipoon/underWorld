@@ -150,6 +150,7 @@ public class stageOneController implements Initializable {
     @FXML
     protected void handleNextBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("savePointOneScene");
+        resetAllFields();
     }
 
     @Override
@@ -163,8 +164,8 @@ public class stageOneController implements Initializable {
     }
     
      private void resetAllFields(){
-        playerHpText.setText(chara.getAttr().get("Health").toString());
-        mobHpText.setText(Integer.toString(mob.getHp("Kobold")));
+        playerHpText.setText("20");
+        mobHpText.setText(Integer.toString(mob.getHp("Slime")));
         tArea.setText("A Kobold approaches you!");
         currentHp = 20;
         mobHp = mob.getHp("Slime");
