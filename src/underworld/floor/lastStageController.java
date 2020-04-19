@@ -149,7 +149,7 @@ public class lastStageController implements Initializable {
 
     @FXML
     protected void handleNextBtn(final ActionEvent e) throws IOException, Exception {
-        underworldapp.UnderWorld.setActiveScene("mmScene");
+        underworldapp.UnderWorld.setActiveScene("endScene");
         resetAllFields();
     }
 

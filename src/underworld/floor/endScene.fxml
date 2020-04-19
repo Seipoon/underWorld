@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="underworld.floor.endSceneController">
+   <children>
+      <Text fill="WHITE" layoutX="202.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The End">
+         <font>
+            <Font name="Bookman Old Style Italic" size="48.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="48.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations on making it to the bottom of the cave. Now it's time to consider this. Just like you didn't have to enter this cave, I didn't have to make this project. But it was for the adventure and the struggles. I hope it was worth your while." textAlignment="CENTER" wrappingWidth="504.552734375">
+         <font>
+            <Font name="Century Gothic" size="22.0" />
+         </font>
+      </Text>
+      <Button fx:id="homeBtn" layoutX="274.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#handleHomeBtn" text="Home" />
+   </children>
+</AnchorPane>

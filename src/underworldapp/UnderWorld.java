@@ -87,6 +87,11 @@ public class UnderWorld extends Application {
         lastStageLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/lastStage.fxml"));
         Parent lastStageRoot = lastStageLoader.load();
         LOADER_LIST.put("finalStageScene", lastStageRoot);
+        
+        FXMLLoader endSceneLoader = new FXMLLoader();
+        endSceneLoader.setLocation(UnderWorld.class.getResource("/underworld/floor/endScene.fxml"));
+        Parent endSceneRoot = endSceneLoader.load();
+        LOADER_LIST.put("endScene", endSceneRoot);
 
     }
 
