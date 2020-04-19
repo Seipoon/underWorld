@@ -29,7 +29,7 @@ public class stageTwoController implements Initializable {
     @FXML
     private Text mobHpText, playerHpText;
     
-    private final characterCreatorController ccc;
+    private final characterCreatorController characterCreatorController;
     private int currentHp;
     private final underworld.character.Character chara;
     
@@ -41,8 +41,8 @@ public class stageTwoController implements Initializable {
         playerHpText = new Text();
         mobHpText = new Text();
         currentHp = 20;
-        ccc = new characterCreatorController();
-        chara = ccc.fetchChara();
+        characterCreatorController = new characterCreatorController();
+        chara = characterCreatorController.fetchChara();
         chara.setCharaValues();
     }
 
@@ -153,6 +153,7 @@ public class stageTwoController implements Initializable {
     @FXML
     protected void handleNextBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("savePointTwoScene");
+        resetAllFields();
     }
 
     @Override
@@ -170,6 +171,9 @@ public class stageTwoController implements Initializable {
         tArea.setText("A Goblin has appeared out of the darkness!");
         currentHp = 20;
         mobHp = mob.getHp("Goblin");
+        attackBtn.setDisable(false);
+        abilityBtn.setDisable(false);
+        nextBtn.setVisible(false);
     }
 
 }

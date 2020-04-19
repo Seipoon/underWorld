@@ -28,11 +28,11 @@ public class stageThreeController implements Initializable {
     private TextArea tArea;
     @FXML
     private Text mobHpText, playerHpText;
-    
-    private final characterCreatorController ccc;
+
+    private final characterCreatorController characterCreatorController;
     private int currentHp;
     private final underworld.character.Character chara;
-    
+
     private final Mob mob = new Mob();
     private int mobHp = mob.getHp("Kobold");
     private final int mobAtk = mob.getAtk("Kobold");
@@ -43,9 +43,9 @@ public class stageThreeController implements Initializable {
         currentHp = 20;
         playerHpText.setText(Integer.toString(currentHp));
         mobHpText.setText(Integer.toString(mobHp));
-        
-        ccc = new characterCreatorController();
-        chara = ccc.fetchChara();
+
+        characterCreatorController = new characterCreatorController();
+        chara = characterCreatorController.fetchChara();
         chara.setCharaValues();
     }
 
@@ -54,8 +54,8 @@ public class stageThreeController implements Initializable {
         mobHp -= atk;
         mobHpText.setText(Integer.toString(mobHp));
     }
-    
-    private void playerToMobAbilityDmg(String statType, int dmgBoost){
+
+    private void playerToMobAbilityDmg(String statType, int dmgBoost) {
         final int atk = chara.getAttr().get(statType);
         mobHp -= (atk + dmgBoost);
         mobHpText.setText(Integer.toString(mobHp));
@@ -64,18 +64,18 @@ public class stageThreeController implements Initializable {
     public Character fetchChara() {
         return chara;
     }
-    
-    private void setCurrentHp(){
+
+    private void setCurrentHp() {
         chara.getAttr().put("Health", currentHp);
         playerHpText.setText(Integer.toString(currentHp));
     }
-    
-    private void mobToPlayerDmg(){
+
+    private void mobToPlayerDmg() {
         tArea.appendText("\nThe Kobold slashes at you! It dealt " + mobAtk + " damage!");
         currentHp -= mobAtk;
     }
-    
-    private boolean checkIfMobDead(){
+
+    private boolean checkIfMobDead() {
         if (mobHp == 0 || mobHp < 0) {
             tArea.appendText("\nYou have slain the Kobold!\nYou smell treasures!");
             nextBtn.setVisible(true);
@@ -83,8 +83,9 @@ public class stageThreeController implements Initializable {
             attackBtn.setDisable(true);
             abilityBtn.setDisable(true);
             return true;
+        } else {
+            return false;
         }
-        else return false;
     }
 
     @FXML
@@ -93,14 +94,13 @@ public class stageThreeController implements Initializable {
             tArea.setText("You attacked the Kobold!");
             tArea.appendText(" You dealt " + chara.getAttr().get("Strength") + " damage!");
             playerToMobDmg();
-            if(checkIfMobDead()){
-            
-            }
-            else{
+            if (checkIfMobDead()) {
+
+            } else {
                 mobToPlayerDmg();
                 setCurrentHp();
             }
-        }  
+        }
     }
 
     @FXML
@@ -109,37 +109,34 @@ public class stageThreeController implements Initializable {
             if (chara.getAttr().get("Class").equals(1)) {
                 tArea.setText("You used crippling strike! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Strength") + 3) + " damage!");
-                playerToMobAbilityDmg("Strength",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Strength", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
             }
-            
+
             if (chara.getAttr().get("Class").equals(2)) {
                 tArea.setText("You used fireball! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Intelligence") + 3) + " damage!");
-                playerToMobAbilityDmg("Intelligence",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Intelligence", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
             }
-            
+
             if (chara.getAttr().get("Class").equals(3)) {
                 tArea.setText("You used backstab! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Dexterity") + 3) + " damage!");
-                playerToMobAbilityDmg("Dexterity",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Dexterity", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
@@ -156,6 +153,7 @@ public class stageThreeController implements Initializable {
     @FXML
     protected void handleNextBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("savePointThreeScene");
+        resetAllFields();
     }
 
     @Override
@@ -166,13 +164,16 @@ public class stageThreeController implements Initializable {
         attackBtn.setDisable(false);
         abilityBtn.setDisable(false);
     }
-    
-    private void resetAllFields(){
+
+    private void resetAllFields() {
         playerHpText.setText("20");
         mobHpText.setText(Integer.toString(mob.getHp("Kobold")));
         tArea.setText("A Kobold approaches you!");
         mobHp = mob.getHp("Kobold");
         currentHp = 20;
+        attackBtn.setDisable(false);
+        abilityBtn.setDisable(false);
+        nextBtn.setVisible(false);
     }
 
 }

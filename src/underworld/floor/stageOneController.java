@@ -28,19 +28,19 @@ public class stageOneController implements Initializable {
     private TextArea tArea;
     @FXML
     private Text mobHpText, playerHpText;
-    
-    private final characterCreatorController ccc;
+
+    private final characterCreatorController charcterCreatorController;
     private int currentHp;
     private final underworld.character.Character chara;
-    
+
     private final Mob mob = new Mob();
     private int mobHp = mob.getHp("Slime");
     private final int mobAtk = mob.getAtk("Slime");
 
     public stageOneController() throws IOException {
         currentHp = 20;
-        ccc = new characterCreatorController();
-        chara = ccc.fetchChara();
+        charcterCreatorController = new characterCreatorController();
+        chara = charcterCreatorController.fetchChara();
         chara.setCharaValues();
     }
 
@@ -49,8 +49,8 @@ public class stageOneController implements Initializable {
         mobHp -= atk;
         mobHpText.setText(Integer.toString(mobHp));
     }
-    
-    private void playerToMobAbilityDmg(String statType, int dmgBoost){
+
+    private void playerToMobAbilityDmg(String statType, int dmgBoost) {
         final int atk = chara.getAttr().get(statType);
         mobHp -= (atk + dmgBoost);
         mobHpText.setText(Integer.toString(mobHp));
@@ -59,18 +59,18 @@ public class stageOneController implements Initializable {
     public Character fetchChara() {
         return chara;
     }
-    
-    private void setCurrentHp(){
+
+    private void setCurrentHp() {
         chara.getAttr().put("Health", currentHp);
         playerHpText.setText(Integer.toString(currentHp));
     }
-    
-    private void mobToPlayerDmg(){
+
+    private void mobToPlayerDmg() {
         tArea.appendText("The Slime tackled into you! It dealt " + mobAtk + " damage!");
         currentHp -= mobAtk;
     }
-    
-    private boolean checkIfMobDead(){
+
+    private boolean checkIfMobDead() {
         if (mobHp == 0 || mobHp < 0) {
             tArea.appendText("\nYou have slain the slime!\nYou're cruel and definetly hate small animals...");
             nextBtn.setVisible(true);
@@ -78,8 +78,9 @@ public class stageOneController implements Initializable {
             attackBtn.setDisable(true);
             abilityBtn.setDisable(true);
             return true;
+        } else {
+            return false;
         }
-        else return false;
     }
 
     @FXML
@@ -88,14 +89,13 @@ public class stageOneController implements Initializable {
             tArea.setText("You attacked the slime!");
             tArea.appendText(" You dealt " + chara.getAttr().get("Strength") + " damage!");
             playerToMobDmg();
-            if(checkIfMobDead()){
-            
-            }
-            else{
+            if (checkIfMobDead()) {
+
+            } else {
                 mobToPlayerDmg();
                 setCurrentHp();
             }
-        }  
+        }
     }
 
     @FXML
@@ -104,37 +104,34 @@ public class stageOneController implements Initializable {
             if (chara.getAttr().get("Class").equals(1)) {
                 tArea.setText("You used crippling strike! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Strength") + 3) + " damage!");
-                playerToMobAbilityDmg("Strength",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Strength", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
             }
-            
+
             if (chara.getAttr().get("Class").equals(2)) {
                 tArea.setText("You used fireball! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Intelligence") + 3) + " damage!");
-                playerToMobAbilityDmg("Intelligence",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Intelligence", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
             }
-            
+
             if (chara.getAttr().get("Class").equals(3)) {
                 tArea.setText("You used backstab! ");
                 tArea.appendText("You dealt " + (chara.getAttr().get("Dexterity") + 3) + " damage!");
-                playerToMobAbilityDmg("Dexterity",3);
-                if(checkIfMobDead()){
-            
-                }
-                else{
+                playerToMobAbilityDmg("Dexterity", 3);
+                if (checkIfMobDead()) {
+
+                } else {
                     mobToPlayerDmg();
                     setCurrentHp();
                 }
@@ -163,13 +160,16 @@ public class stageOneController implements Initializable {
         attackBtn.setDisable(false);
         abilityBtn.setDisable(false);
     }
-    
-     private void resetAllFields(){
+
+    private void resetAllFields() {
         playerHpText.setText("20");
         mobHpText.setText(Integer.toString(mob.getHp("Slime")));
         tArea.setText("A slime has bounced up to you!");
         currentHp = 20;
         mobHp = mob.getHp("Slime");
+        attackBtn.setDisable(false);
+        abilityBtn.setDisable(false);
+        nextBtn.setVisible(false);
     }
 
 }

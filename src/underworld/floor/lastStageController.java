@@ -29,7 +29,7 @@ public class lastStageController implements Initializable {
     @FXML
     private Text mobHpText, playerHpText;
 
-    private final characterCreatorController ccc;
+    private final characterCreatorController characterCreatorController;
     private int currentHp;
     private final underworld.character.Character chara;
 
@@ -41,8 +41,8 @@ public class lastStageController implements Initializable {
         playerHpText = new Text();
         mobHpText = new Text();
         currentHp = 20;
-        ccc = new characterCreatorController();
-        chara = ccc.fetchChara();
+        characterCreatorController = new characterCreatorController();
+        chara = characterCreatorController.fetchChara();
         chara.setCharaValues();
     }
 
@@ -144,6 +144,7 @@ public class lastStageController implements Initializable {
     @FXML
     protected void handleQuitBtn(final ActionEvent e) throws IOException, Exception {
         underworldapp.UnderWorld.setActiveScene("mmScene");
+        resetAllFields();
     }
 
     @FXML
@@ -168,6 +169,9 @@ public class lastStageController implements Initializable {
         tArea.setText("A Null Pointer Exception has occured lol just kidding!\nFINAL BOSS APPROACHES!");
         currentHp = 20;
         mobHp = mob.getHp("Null Pointer Exception");
+        attackBtn.setDisable(false);
+        abilityBtn.setDisable(false);
+        nextBtn.setVisible(false);
     }
 
 }

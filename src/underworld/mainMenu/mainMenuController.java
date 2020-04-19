@@ -38,15 +38,12 @@ public class mainMenuController {
     @FXML
     protected void handleStartBtn(ActionEvent event) throws IOException {
         if(splitAndGetSavePoint().equals("1")){
-            underworldapp.UnderWorld.setActiveScene("stageOneScene");
-        }
-        else if(splitAndGetSavePoint().equals("2")){
             underworldapp.UnderWorld.setActiveScene("stageTwoScene");
         }
-        else if (splitAndGetSavePoint().equals("3")){
+        else if(splitAndGetSavePoint().equals("2")){
             underworldapp.UnderWorld.setActiveScene("stageThreeScene");
         }
-        else if (splitAndGetSavePoint().equals("4")){
+        else if (splitAndGetSavePoint().equals("3")){
             underworldapp.UnderWorld.setActiveScene("finalStageScene");
         }
         else{

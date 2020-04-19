@@ -29,7 +29,7 @@ public class savePointTwoController {
     private final Character chara;
     private String newData;
 
-    public savePointTwoController() {
+    public savePointTwoController() throws IOException {
         stc = new stageThreeController();
         chara = Character.getInstance();
 
@@ -58,7 +58,7 @@ public class savePointTwoController {
                 ok.setTitle("Save Confirm");
                 ok.setHeaderText("Game Saved!");
                 ok.setContentText("Game has been successfully saved!");
-                underworldapp.UnderWorld.setCurrentStage("stageThree");
+                underworldapp.UnderWorld.setCurrentStage("stageThreeScene");
                 ok.showAndWait();
             }
 
